@@ -1,9 +1,11 @@
 ﻿namespace EC_V2.Repositories.Interfaces
 {
-    public interface IUnitOfWork:IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IProductRepository Product { get; }
         ICategoryRepository Category { get; }
+        IVendorProfileRepository VendorProfile { get; }
+        ICustomerProfileRepository CustomerProfile { get; }
 
 
         Task<int> SaveChangesAsync();
