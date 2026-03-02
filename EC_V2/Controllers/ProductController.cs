@@ -1,17 +1,12 @@
 ﻿using AutoMapper;
-using EC_V2.Data;
 using EC_V2.Dtos;
 using EC_V2.Models;
 using EC_V2.Repositories.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace EC_V2.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -25,13 +20,26 @@ namespace EC_V2.Controllers
             _mapper = Mapper;
             _logger = logger;
         }
+        //[HttpGet]
+        //public async Task<IActionResult> GetAll()
+        //{
+        //    _logger.LogInformation("Getting all products");
+        //    var products = await _unitOfWork.Product.GetAllWithCategories();
+        //    _logger.LogInformation("Returned {Count} products", products.Count());
+        //    return Ok(_mapper.Map<List<ProductDto>>(products));
+        //}
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] ProductQueryDto query)
         {
-            _logger.LogInformation("Getting all products");
-            var products = await _unitOfWork.Product.GetAllWithCategories();
-            _logger.LogInformation("Returned {Count} products", products.Count());
-            return Ok(_mapper.Map<List<ProductDto>>(products));
+            _logger.LogInformation("Getting products with query: {@Query}", query);
+            var pagedProducts = await _unitOfWork.Product.GetPagedProducts(query);
+            var productDtos = _mapper.Map<List<ProductDto>>(pagedProducts.Items);
+            return Ok(new PagedResult<ProductDto>
+            {
+                Items = productDtos,
+                NextCursor = pagedProducts.NextCursor,
+                HasMore = pagedProducts.HasMore
+            });
         }
 
         [HttpGet("{id}")]
