@@ -10,6 +10,8 @@ namespace EC_V2.Repositories.Implementations
         public ICategoryRepository Category { get; private set; }
         public IVendorProfileRepository VendorProfile { get; private set; }
         public ICustomerProfileRepository CustomerProfile { get; private set; }
+        public ICouponRepository Coupon { get; private set; }
+        public IOrderRepository Order { get; private set; }
         public UnitOfWork(AppDbContext context)
         {
             _context = context;
@@ -17,6 +19,7 @@ namespace EC_V2.Repositories.Implementations
             Category = new CategoryRepository(_context);
             VendorProfile = new VendorProfileRepository(_context);
             CustomerProfile = new CustomerProfileRepository(_context);
+            Coupon = new CouponRepository(_context);
         }
         public async Task<int> SaveChangesAsync()
         {

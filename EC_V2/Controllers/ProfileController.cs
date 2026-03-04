@@ -1,5 +1,5 @@
 ﻿using System.Security.Claims;
-using EC_V2.Dtos;
+using EC_V2.Dtos.ProfileDtos;
 using EC_V2.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

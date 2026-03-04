@@ -6,6 +6,8 @@
         ICategoryRepository Category { get; }
         IVendorProfileRepository VendorProfile { get; }
         ICustomerProfileRepository CustomerProfile { get; }
+        ICouponRepository Coupon { get; }
+        IOrderRepository Order { get; }
 
 
         Task<int> SaveChangesAsync();

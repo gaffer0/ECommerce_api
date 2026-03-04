@@ -13,6 +13,9 @@ namespace EC_V2.Data
         public DbSet<CustomerProfile> customerProfiles { get; set; }
         public DbSet<RefreshToken> refreshTokens { get; set; }
         public DbSet<OtpCode>otpCodes { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Coupon> Coupons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

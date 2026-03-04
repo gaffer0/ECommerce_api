@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EC_V2.Dtos;
+using EC_V2.Dtos.OrderDtos;
 using EC_V2.Models;
 
 namespace EC_V2.Mapping
@@ -15,6 +16,10 @@ namespace EC_V2.Mapping
                 .ForMember(dest => dest.ParentCategory, opt => opt.MapFrom(src => src.Parent));
             CreateMap<AddCategoryDto, Category>();
             CreateMap<Category, UpdateCategoryDto>();
+            CreateMap<Order, OrderDto>()
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()));
+
+            CreateMap<OrderItem, OrderItemDto>();
         }
 
         

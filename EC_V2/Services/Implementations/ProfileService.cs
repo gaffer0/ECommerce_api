@@ -1,4 +1,5 @@
 ﻿using EC_V2.Dtos;
+using EC_V2.Dtos.ProfileDtos;
 using EC_V2.Models;
 using EC_V2.Repositories.Interfaces;
 using EC_V2.Services.Interfaces;

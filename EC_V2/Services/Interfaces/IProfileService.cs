@@ -1,4 +1,5 @@
 ﻿using EC_V2.Dtos;
+using EC_V2.Dtos.ProfileDtos;
 
 namespace EC_V2.Services.Interfaces
 {

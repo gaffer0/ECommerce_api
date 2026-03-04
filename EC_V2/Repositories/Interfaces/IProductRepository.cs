@@ -7,6 +7,7 @@ namespace EC_V2.Repositories.Interfaces
     {
         Task<IEnumerable<Product>> GetAllWithCategories();
         Task<Product?> GetByIdWithCategories(int id);
+        Task<List<Product>> GetByIds(List<int> ids);
         Task<PagedResult<Product>> GetPagedProducts(ProductQueryDto query);
     }
 }

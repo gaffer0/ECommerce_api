@@ -9,6 +9,8 @@
         public int Stock { get; set; }
         public string? ImageUrl { get; set; }
 
+        public string? VendorId { get; set; }
+        public AppUser? Vendor { get; set; }
         public ICollection<Category> Categories { get; set; } // many-to-many
     }
 }

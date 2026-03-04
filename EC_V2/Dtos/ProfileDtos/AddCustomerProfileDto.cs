@@ -1,4 +1,4 @@
-﻿namespace EC_V2.Dtos
+﻿namespace EC_V2.Dtos.ProfileDtos
 {
     public class AddCustomerProfileDto
     {

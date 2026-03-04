@@ -32,6 +32,12 @@ namespace EC_V2.Repositories.Implementations
                 .ThenInclude(c => c.Parent)
                 .ToListAsync();
         }
+        public async Task<List<Product>> GetByIds(List<int> ids)
+        {
+            return await _context.Set<Product>()
+                .Where(p => ids.Contains(p.Id))
+                .ToListAsync();
+        }
 
         public async Task<Product?> GetByIdWithCategories(int id)
         {
